@@ -8,7 +8,11 @@
 <script>
 export default {
   name: 'users',
-  layout: 'default'
+  layout: 'default',
+  middleware: 'checkAuth',
+  created () {
+    this.$log()
+  }
 }
 </script>
 
