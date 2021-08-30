@@ -14,13 +14,21 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+
 export default {
   name: 'users',
-  computed: {
-    ...mapGetters({
-      users: 'users/getUsers'
-    })
+  async asyncData () {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users')
+    const users = await response.json()
+
+    return {
+      users
+    }
+  },
+  data () {
+    return {
+      users: []
+    }
   }
 }
 </script>
